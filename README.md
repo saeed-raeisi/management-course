@@ -7,7 +7,7 @@
   <img src="/register.PNG" width="850" height="550" alt="accessibility text">
   <img src="/maun.PNG" width="850" height="550" alt="accessibility text">
   <img src="/edit.PNG" width="850" height="550" alt="accessibility text">
-  <img src="/cource_register.PNG" width="850" height="550" alt="accessibility text">
+  <img src="/course_register.PNG" width="850" height="550" alt="accessibility text">
 
 
 

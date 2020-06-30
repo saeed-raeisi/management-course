@@ -3,11 +3,11 @@
 
 <p>
 
-<img src="/login.PNG" width="290" height="640" title="hover text">
-  <img src="/register.PNG" width="290" height="640" alt="accessibility text">
-  <img src="/maun.PNG" width="290" height="640" alt="accessibility text">
-  <img src="/edit.PNG" width="290" height="640" alt="accessibility text">
-  <img src="/cource_register.PNG" width="290" height="640" alt="accessibility text">
+<img src="/login.PNG" width="850" height="550" title="hover text">
+  <img src="/register.PNG" width="850" height="550" alt="accessibility text">
+  <img src="/maun.PNG" width="850" height="550" alt="accessibility text">
+  <img src="/edit.PNG" width="850" height="550" alt="accessibility text">
+  <img src="/cource_register.PNG" width="850" height="550" alt="accessibility text">
 
 
 

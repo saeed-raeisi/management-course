@@ -1,0 +1,989 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bank_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="bank_code" Type="nchar" MaxLength="10" />
+          <Property Name="bank_name" Type="nchar" MaxLength="10" />
+          <Property Name="bank_state" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="bayati">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="company_tbl">
+          <Key>
+            <PropertyRef Name="company_code" />
+          </Key>
+          <Property Name="company_code" Type="int" Nullable="false" />
+          <Property Name="company_activity" Type="nchar" MaxLength="10" />
+          <Property Name="company_type" Type="nvarchar(max)" />
+          <Property Name="company_name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="course_tbl">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="course_id" Type="int" Nullable="false" />
+          <Property Name="course_name" Type="nchar" MaxLength="10" />
+          <Property Name="course_level" Type="nchar" MaxLength="10" />
+          <Property Name="course_coditions" Type="ntext" />
+          <Property Name="source_id" Type="int" Nullable="false" />
+          <Property Name="master_personal_code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="comples" Type="ntext" />
+          <Property Name="class_num" Type="int" />
+        </EntityType>
+        <EntityType Name="degree_tbl">
+          <Key>
+            <PropertyRef Name="degree_code" />
+          </Key>
+          <Property Name="degree_code" Type="int" Nullable="false" />
+          <Property Name="degree_name" Type="nchar" MaxLength="10" />
+          <Property Name="degree_organ" Type="nchar" MaxLength="10" />
+          <Property Name="degree_credential" Type="nchar" MaxLength="10" />
+          <Property Name="degree_score" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="employee_tbl">
+          <Key>
+            <PropertyRef Name="personal_code" />
+          </Key>
+          <Property Name="personal_code" Type="int" Nullable="false" />
+          <Property Name="contact_type" Type="nchar" MaxLength="10" />
+          <Property Name="name_birthday" Type="date" />
+          <Property Name="job" Type="nchar" MaxLength="10" />
+          <Property Name="degree" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="gruduation_tbl">
+          <Key>
+            <PropertyRef Name="register_id" />
+          </Key>
+          <Property Name="register_id" Type="int" Nullable="false" />
+          <Property Name="intern_national_code" Type="int" />
+          <Property Name="course_id" Type="int" Nullable="false" />
+          <Property Name="register_date" Type="date" />
+          <Property Name="register_conditions" Type="text" />
+        </EntityType>
+        <EntityType Name="history_tbl">
+          <Key>
+            <PropertyRef Name="history_id" />
+            <PropertyRef Name="intern_national_code" />
+          </Key>
+          <Property Name="history_id" Type="int" Nullable="false" />
+          <Property Name="intern_national_code" Type="int" Nullable="false" />
+          <Property Name="history_titile" Type="nchar" MaxLength="10" />
+          <Property Name="history_period" Type="nchar" MaxLength="10" />
+          <Property Name="history_wages" Type="nchar" MaxLength="10" />
+          <Property Name="history_manager" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="intern_tbl">
+          <Key>
+            <PropertyRef Name="intern_national_code" />
+          </Key>
+          <Property Name="intern_national_code" Type="int" Nullable="false" />
+          <Property Name="intern_name" Type="nvarchar(max)" />
+          <Property Name="intern_birthday" Type="date" />
+          <Property Name="intern_job" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="internship_request_tbl">
+          <Key>
+            <PropertyRef Name="request_num" />
+          </Key>
+          <Property Name="request_num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="request_date" Type="nchar" MaxLength="10" />
+          <Property Name="company_code" Type="int" />
+          <Property Name="request_conditiions" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="introducing_tbl">
+          <Key>
+            <PropertyRef Name="introducing_id" />
+          </Key>
+          <Property Name="introducing_id" Type="int" Nullable="false" />
+          <Property Name="manager_personal_code" Type="int" />
+          <Property Name="intern_national_code" Type="int" />
+          <Property Name="company_code" Type="int" />
+          <Property Name="introducing_conditions" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="manager_tbl">
+          <Key>
+            <PropertyRef Name="manager_personal_code" />
+          </Key>
+          <Property Name="manager_personal_code" Type="int" Nullable="false" />
+          <Property Name="history" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="master_tbl">
+          <Key>
+            <PropertyRef Name="master_personal_code" />
+          </Key>
+          <Property Name="master_personal_code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="master_specialty" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\TECHNICAL.MDF.dbo.payment_tbl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="payment_tbl">
+          <Key>
+            <PropertyRef Name="intern_national_code" />
+          </Key>
+          <Property Name="intern_national_code" Type="int" Nullable="false" />
+          <Property Name="register_id" Type="nchar" MaxLength="10" />
+          <Property Name="payment_date" Type="nchar" MaxLength="10" />
+          <Property Name="payment_tracking_code" Type="nchar" MaxLength="10" />
+          <Property Name="payment_amount" Type="nchar" MaxLength="10" />
+          <Property Name="bank_code" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="register_tbl">
+          <Key>
+            <PropertyRef Name="register_id" />
+          </Key>
+          <Property Name="register_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intern_national_code" Type="int" Nullable="false" />
+          <Property Name="course_id" Type="int" Nullable="false" />
+          <Property Name="register_date" Type="date" />
+          <Property Name="register_conditions" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="source_tbl">
+          <Key>
+            <PropertyRef Name="source_id" />
+          </Key>
+          <Property Name="source_id" Type="int" Nullable="false" />
+          <Property Name="source_author" Type="nchar" MaxLength="10" />
+          <Property Name="source_price" Type="nchar" MaxLength="10" />
+          <Property Name="source_title" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="request_num" />
+          </Key>
+          <Property Name="request_num" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__course_tb__maste__1EA48E88">
+          <End Role="master_tbl" Type="Self.master_tbl" Multiplicity="1" />
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="master_tbl">
+              <PropertyRef Name="master_personal_code" />
+            </Principal>
+            <Dependent Role="course_tbl">
+              <PropertyRef Name="master_personal_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__course_tb__sourc__42E1EEFE">
+          <End Role="source_tbl" Type="Self.source_tbl" Multiplicity="1" />
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="source_tbl">
+              <PropertyRef Name="source_id" />
+            </Principal>
+            <Dependent Role="course_tbl">
+              <PropertyRef Name="source_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gruduatio__cours__1CBC4616">
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="1" />
+          <End Role="gruduation_tbl" Type="Self.gruduation_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course_tbl">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="gruduation_tbl">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gruduatio__inter__3C69FB99">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="0..1" />
+          <End Role="gruduation_tbl" Type="Self.gruduation_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="gruduation_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__history_t__inter__4316F928">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="1" />
+          <End Role="history_tbl" Type="Self.history_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="history_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__internshi__compa__489AC854">
+          <End Role="company_tbl" Type="Self.company_tbl" Multiplicity="0..1" />
+          <End Role="internship_request_tbl" Type="Self.internship_request_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company_tbl">
+              <PropertyRef Name="company_code" />
+            </Principal>
+            <Dependent Role="internship_request_tbl">
+              <PropertyRef Name="company_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__introduci__compa__4BAC3F29">
+          <End Role="company_tbl" Type="Self.company_tbl" Multiplicity="0..1" />
+          <End Role="introducing_tbl" Type="Self.introducing_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company_tbl">
+              <PropertyRef Name="company_code" />
+            </Principal>
+            <Dependent Role="introducing_tbl">
+              <PropertyRef Name="company_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__introduci__inter__4CA06362">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="0..1" />
+          <End Role="introducing_tbl" Type="Self.introducing_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="introducing_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__introduci__manag__4AB81AF0">
+          <End Role="manager_tbl" Type="Self.manager_tbl" Multiplicity="0..1" />
+          <End Role="introducing_tbl" Type="Self.introducing_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manager_tbl">
+              <PropertyRef Name="manager_personal_code" />
+            </Principal>
+            <Dependent Role="introducing_tbl">
+              <PropertyRef Name="manager_personal_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__manager_t__perso__31EC6D26">
+          <End Role="employee_tbl" Type="Self.employee_tbl" Multiplicity="1" />
+          <End Role="manager_tbl" Type="Self.manager_tbl" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="employee_tbl">
+              <PropertyRef Name="personal_code" />
+            </Principal>
+            <Dependent Role="manager_tbl">
+              <PropertyRef Name="manager_personal_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__register___cours__40F9A68C">
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="1" />
+          <End Role="register_tbl" Type="Self.register_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course_tbl">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="register_tbl">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__register___inter__41EDCAC5">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="1" />
+          <End Role="register_tbl" Type="Self.register_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="register_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="bank_tbl" EntityType="Self.bank_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bayati" EntityType="Self.bayati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="company_tbl" EntityType="Self.company_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="course_tbl" EntityType="Self.course_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="degree_tbl" EntityType="Self.degree_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_tbl" EntityType="Self.employee_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gruduation_tbl" EntityType="Self.gruduation_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="history_tbl" EntityType="Self.history_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="intern_tbl" EntityType="Self.intern_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="internship_request_tbl" EntityType="Self.internship_request_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="introducing_tbl" EntityType="Self.introducing_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="manager_tbl" EntityType="Self.manager_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="master_tbl" EntityType="Self.master_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="register_tbl" EntityType="Self.register_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="source_tbl" EntityType="Self.source_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_tbl" EntityType="Self.payment_tbl" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [payment_tbl].[intern_national_code] AS [intern_national_code], 
+    [payment_tbl].[register_id] AS [register_id], 
+    [payment_tbl].[payment_date] AS [payment_date], 
+    [payment_tbl].[payment_tracking_code] AS [payment_tracking_code], 
+    [payment_tbl].[payment_amount] AS [payment_amount], 
+    [payment_tbl].[bank_code] AS [bank_code]
+    FROM [dbo].[payment_tbl] AS [payment_tbl]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__course_tb__maste__1EA48E88" Association="Self.FK__course_tb__maste__1EA48E88">
+            <End Role="master_tbl" EntitySet="master_tbl" />
+            <End Role="course_tbl" EntitySet="course_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__course_tb__sourc__42E1EEFE" Association="Self.FK__course_tb__sourc__42E1EEFE">
+            <End Role="source_tbl" EntitySet="source_tbl" />
+            <End Role="course_tbl" EntitySet="course_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gruduatio__cours__1CBC4616" Association="Self.FK__gruduatio__cours__1CBC4616">
+            <End Role="course_tbl" EntitySet="course_tbl" />
+            <End Role="gruduation_tbl" EntitySet="gruduation_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gruduatio__inter__3C69FB99" Association="Self.FK__gruduatio__inter__3C69FB99">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="gruduation_tbl" EntitySet="gruduation_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__history_t__inter__4316F928" Association="Self.FK__history_t__inter__4316F928">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="history_tbl" EntitySet="history_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__internshi__compa__489AC854" Association="Self.FK__internshi__compa__489AC854">
+            <End Role="company_tbl" EntitySet="company_tbl" />
+            <End Role="internship_request_tbl" EntitySet="internship_request_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__introduci__compa__4BAC3F29" Association="Self.FK__introduci__compa__4BAC3F29">
+            <End Role="company_tbl" EntitySet="company_tbl" />
+            <End Role="introducing_tbl" EntitySet="introducing_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__introduci__inter__4CA06362" Association="Self.FK__introduci__inter__4CA06362">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="introducing_tbl" EntitySet="introducing_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__introduci__manag__4AB81AF0" Association="Self.FK__introduci__manag__4AB81AF0">
+            <End Role="manager_tbl" EntitySet="manager_tbl" />
+            <End Role="introducing_tbl" EntitySet="introducing_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__manager_t__perso__31EC6D26" Association="Self.FK__manager_t__perso__31EC6D26">
+            <End Role="employee_tbl" EntitySet="employee_tbl" />
+            <End Role="manager_tbl" EntitySet="manager_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__register___cours__40F9A68C" Association="Self.FK__register___cours__40F9A68C">
+            <End Role="course_tbl" EntitySet="course_tbl" />
+            <End Role="register_tbl" EntitySet="register_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__register___inter__41EDCAC5" Association="Self.FK__register___inter__41EDCAC5">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="register_tbl" EntitySet="register_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bank_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="bank_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="bank_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="bank_state" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bayati">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="company_tbl">
+          <Key>
+            <PropertyRef Name="company_code" />
+          </Key>
+          <Property Name="company_code" Type="Int32" Nullable="false" />
+          <Property Name="company_activity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="company_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="company_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="internship_request_tbl" Relationship="Self.FK__internshi__compa__489AC854" FromRole="company_tbl" ToRole="internship_request_tbl" />
+          <NavigationProperty Name="introducing_tbl" Relationship="Self.FK__introduci__compa__4BAC3F29" FromRole="company_tbl" ToRole="introducing_tbl" />
+        </EntityType>
+        <EntityType Name="course_tbl">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="course_id" Type="Int32" Nullable="false" />
+          <Property Name="course_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="course_level" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="course_coditions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="source_id" Type="Int32" Nullable="false" />
+          <Property Name="master_personal_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="comples" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="class_num" Type="Int32" />
+          <NavigationProperty Name="master_tbl" Relationship="Self.FK__course_tb__maste__1EA48E88" FromRole="course_tbl" ToRole="master_tbl" />
+          <NavigationProperty Name="source_tbl" Relationship="Self.FK__course_tb__sourc__42E1EEFE" FromRole="course_tbl" ToRole="source_tbl" />
+          <NavigationProperty Name="gruduation_tbl" Relationship="Self.FK__gruduatio__cours__1CBC4616" FromRole="course_tbl" ToRole="gruduation_tbl" />
+          <NavigationProperty Name="register_tbl" Relationship="Self.FK__register___cours__40F9A68C" FromRole="course_tbl" ToRole="register_tbl" />
+        </EntityType>
+        <EntityType Name="degree_tbl">
+          <Key>
+            <PropertyRef Name="degree_code" />
+          </Key>
+          <Property Name="degree_code" Type="Int32" Nullable="false" />
+          <Property Name="degree_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="degree_organ" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="degree_credential" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="degree_score" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="employee_tbl">
+          <Key>
+            <PropertyRef Name="personal_code" />
+          </Key>
+          <Property Name="personal_code" Type="Int32" Nullable="false" />
+          <Property Name="contact_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name_birthday" Type="DateTime" Precision="0" />
+          <Property Name="job" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="degree" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="manager_tbl" Relationship="Self.FK__manager_t__perso__31EC6D26" FromRole="employee_tbl" ToRole="manager_tbl" />
+        </EntityType>
+        <EntityType Name="gruduation_tbl">
+          <Key>
+            <PropertyRef Name="register_id" />
+          </Key>
+          <Property Name="register_id" Type="Int32" Nullable="false" />
+          <Property Name="intern_national_code" Type="Int32" />
+          <Property Name="course_id" Type="Int32" Nullable="false" />
+          <Property Name="register_date" Type="DateTime" Precision="0" />
+          <Property Name="register_conditions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="course_tbl" Relationship="Self.FK__gruduatio__cours__1CBC4616" FromRole="gruduation_tbl" ToRole="course_tbl" />
+          <NavigationProperty Name="intern_tbl" Relationship="Self.FK__gruduatio__inter__3C69FB99" FromRole="gruduation_tbl" ToRole="intern_tbl" />
+        </EntityType>
+        <EntityType Name="history_tbl">
+          <Key>
+            <PropertyRef Name="history_id" />
+            <PropertyRef Name="intern_national_code" />
+          </Key>
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <Property Name="intern_national_code" Type="Int32" Nullable="false" />
+          <Property Name="history_titile" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="history_period" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="history_wages" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="history_manager" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="intern_tbl" Relationship="Self.FK__history_t__inter__4316F928" FromRole="history_tbl" ToRole="intern_tbl" />
+        </EntityType>
+        <EntityType Name="intern_tbl">
+          <Key>
+            <PropertyRef Name="intern_national_code" />
+          </Key>
+          <Property Name="intern_national_code" Type="Int32" Nullable="false" />
+          <Property Name="intern_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="intern_birthday" Type="DateTime" Precision="0" />
+          <Property Name="intern_job" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="gruduation_tbl" Relationship="Self.FK__gruduatio__inter__3C69FB99" FromRole="intern_tbl" ToRole="gruduation_tbl" />
+          <NavigationProperty Name="history_tbl" Relationship="Self.FK__history_t__inter__4316F928" FromRole="intern_tbl" ToRole="history_tbl" />
+          <NavigationProperty Name="introducing_tbl" Relationship="Self.FK__introduci__inter__4CA06362" FromRole="intern_tbl" ToRole="introducing_tbl" />
+          <NavigationProperty Name="register_tbl" Relationship="Self.FK__register___inter__41EDCAC5" FromRole="intern_tbl" ToRole="register_tbl" />
+        </EntityType>
+        <EntityType Name="internship_request_tbl">
+          <Key>
+            <PropertyRef Name="request_num" />
+          </Key>
+          <Property Name="request_num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="request_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="company_code" Type="Int32" />
+          <Property Name="request_conditiions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="company_tbl" Relationship="Self.FK__internshi__compa__489AC854" FromRole="internship_request_tbl" ToRole="company_tbl" />
+        </EntityType>
+        <EntityType Name="introducing_tbl">
+          <Key>
+            <PropertyRef Name="introducing_id" />
+          </Key>
+          <Property Name="introducing_id" Type="Int32" Nullable="false" />
+          <Property Name="manager_personal_code" Type="Int32" />
+          <Property Name="intern_national_code" Type="Int32" />
+          <Property Name="company_code" Type="Int32" />
+          <Property Name="introducing_conditions" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="company_tbl" Relationship="Self.FK__introduci__compa__4BAC3F29" FromRole="introducing_tbl" ToRole="company_tbl" />
+          <NavigationProperty Name="intern_tbl" Relationship="Self.FK__introduci__inter__4CA06362" FromRole="introducing_tbl" ToRole="intern_tbl" />
+          <NavigationProperty Name="manager_tbl" Relationship="Self.FK__introduci__manag__4AB81AF0" FromRole="introducing_tbl" ToRole="manager_tbl" />
+        </EntityType>
+        <EntityType Name="manager_tbl">
+          <Key>
+            <PropertyRef Name="manager_personal_code" />
+          </Key>
+          <Property Name="manager_personal_code" Type="Int32" Nullable="false" />
+          <Property Name="history" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="employee_tbl" Relationship="Self.FK__manager_t__perso__31EC6D26" FromRole="manager_tbl" ToRole="employee_tbl" />
+          <NavigationProperty Name="introducing_tbl" Relationship="Self.FK__introduci__manag__4AB81AF0" FromRole="manager_tbl" ToRole="introducing_tbl" />
+        </EntityType>
+        <EntityType Name="master_tbl">
+          <Key>
+            <PropertyRef Name="master_personal_code" />
+          </Key>
+          <Property Name="master_personal_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="master_specialty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="course_tbl" Relationship="Self.FK__course_tb__maste__1EA48E88" FromRole="master_tbl" ToRole="course_tbl" />
+        </EntityType>
+        <EntityType Name="register_tbl">
+          <Key>
+            <PropertyRef Name="register_id" />
+          </Key>
+          <Property Name="register_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intern_national_code" Type="Int32" Nullable="false" />
+          <Property Name="course_id" Type="Int32" Nullable="false" />
+          <Property Name="register_date" Type="DateTime" Precision="0" />
+          <Property Name="register_conditions" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="course_tbl" Relationship="Self.FK__register___cours__40F9A68C" FromRole="register_tbl" ToRole="course_tbl" />
+          <NavigationProperty Name="intern_tbl" Relationship="Self.FK__register___inter__41EDCAC5" FromRole="register_tbl" ToRole="intern_tbl" />
+        </EntityType>
+        <EntityType Name="source_tbl">
+          <Key>
+            <PropertyRef Name="source_id" />
+          </Key>
+          <Property Name="source_id" Type="Int32" Nullable="false" />
+          <Property Name="source_author" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="source_price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="source_title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="course_tbl" Relationship="Self.FK__course_tb__sourc__42E1EEFE" FromRole="source_tbl" ToRole="course_tbl" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="request_num" />
+          </Key>
+          <Property Name="request_num" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment_tbl">
+          <Key>
+            <PropertyRef Name="intern_national_code" />
+          </Key>
+          <Property Name="intern_national_code" Type="Int32" Nullable="false" />
+          <Property Name="register_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="payment_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="payment_tracking_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="payment_amount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="bank_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__internshi__compa__489AC854">
+          <End Role="company_tbl" Type="Self.company_tbl" Multiplicity="0..1" />
+          <End Role="internship_request_tbl" Type="Self.internship_request_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company_tbl">
+              <PropertyRef Name="company_code" />
+            </Principal>
+            <Dependent Role="internship_request_tbl">
+              <PropertyRef Name="company_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__introduci__compa__4BAC3F29">
+          <End Role="company_tbl" Type="Self.company_tbl" Multiplicity="0..1" />
+          <End Role="introducing_tbl" Type="Self.introducing_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company_tbl">
+              <PropertyRef Name="company_code" />
+            </Principal>
+            <Dependent Role="introducing_tbl">
+              <PropertyRef Name="company_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__course_tb__maste__1EA48E88">
+          <End Role="master_tbl" Type="Self.master_tbl" Multiplicity="1" />
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="master_tbl">
+              <PropertyRef Name="master_personal_code" />
+            </Principal>
+            <Dependent Role="course_tbl">
+              <PropertyRef Name="master_personal_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__course_tb__sourc__42E1EEFE">
+          <End Role="source_tbl" Type="Self.source_tbl" Multiplicity="1" />
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="source_tbl">
+              <PropertyRef Name="source_id" />
+            </Principal>
+            <Dependent Role="course_tbl">
+              <PropertyRef Name="source_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gruduatio__cours__1CBC4616">
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="1" />
+          <End Role="gruduation_tbl" Type="Self.gruduation_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course_tbl">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="gruduation_tbl">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__register___cours__40F9A68C">
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="1" />
+          <End Role="register_tbl" Type="Self.register_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course_tbl">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="register_tbl">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__manager_t__perso__31EC6D26">
+          <End Role="employee_tbl" Type="Self.employee_tbl" Multiplicity="1" />
+          <End Role="manager_tbl" Type="Self.manager_tbl" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="employee_tbl">
+              <PropertyRef Name="personal_code" />
+            </Principal>
+            <Dependent Role="manager_tbl">
+              <PropertyRef Name="manager_personal_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gruduatio__inter__3C69FB99">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="0..1" />
+          <End Role="gruduation_tbl" Type="Self.gruduation_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="gruduation_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__history_t__inter__4316F928">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="1" />
+          <End Role="history_tbl" Type="Self.history_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="history_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__introduci__inter__4CA06362">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="0..1" />
+          <End Role="introducing_tbl" Type="Self.introducing_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="introducing_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__register___inter__41EDCAC5">
+          <End Role="intern_tbl" Type="Self.intern_tbl" Multiplicity="1" />
+          <End Role="register_tbl" Type="Self.register_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="intern_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Principal>
+            <Dependent Role="register_tbl">
+              <PropertyRef Name="intern_national_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__introduci__manag__4AB81AF0">
+          <End Role="manager_tbl" Type="Self.manager_tbl" Multiplicity="0..1" />
+          <End Role="introducing_tbl" Type="Self.introducing_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manager_tbl">
+              <PropertyRef Name="manager_personal_code" />
+            </Principal>
+            <Dependent Role="introducing_tbl">
+              <PropertyRef Name="manager_personal_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bank_tbl" EntityType="Self.bank_tbl" />
+          <EntitySet Name="bayatis" EntityType="Self.bayati" />
+          <EntitySet Name="company_tbl" EntityType="Self.company_tbl" />
+          <EntitySet Name="course_tbl" EntityType="Self.course_tbl" />
+          <EntitySet Name="degree_tbl" EntityType="Self.degree_tbl" />
+          <EntitySet Name="employee_tbl" EntityType="Self.employee_tbl" />
+          <EntitySet Name="gruduation_tbl" EntityType="Self.gruduation_tbl" />
+          <EntitySet Name="history_tbl" EntityType="Self.history_tbl" />
+          <EntitySet Name="intern_tbl" EntityType="Self.intern_tbl" />
+          <EntitySet Name="internship_request_tbl" EntityType="Self.internship_request_tbl" />
+          <EntitySet Name="introducing_tbl" EntityType="Self.introducing_tbl" />
+          <EntitySet Name="manager_tbl" EntityType="Self.manager_tbl" />
+          <EntitySet Name="master_tbl" EntityType="Self.master_tbl" />
+          <EntitySet Name="register_tbl" EntityType="Self.register_tbl" />
+          <EntitySet Name="source_tbl" EntityType="Self.source_tbl" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="payment_tbl" EntityType="Self.payment_tbl" />
+          <AssociationSet Name="FK__internshi__compa__489AC854" Association="Self.FK__internshi__compa__489AC854">
+            <End Role="company_tbl" EntitySet="company_tbl" />
+            <End Role="internship_request_tbl" EntitySet="internship_request_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__introduci__compa__4BAC3F29" Association="Self.FK__introduci__compa__4BAC3F29">
+            <End Role="company_tbl" EntitySet="company_tbl" />
+            <End Role="introducing_tbl" EntitySet="introducing_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__course_tb__maste__1EA48E88" Association="Self.FK__course_tb__maste__1EA48E88">
+            <End Role="master_tbl" EntitySet="master_tbl" />
+            <End Role="course_tbl" EntitySet="course_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__course_tb__sourc__42E1EEFE" Association="Self.FK__course_tb__sourc__42E1EEFE">
+            <End Role="source_tbl" EntitySet="source_tbl" />
+            <End Role="course_tbl" EntitySet="course_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gruduatio__cours__1CBC4616" Association="Self.FK__gruduatio__cours__1CBC4616">
+            <End Role="course_tbl" EntitySet="course_tbl" />
+            <End Role="gruduation_tbl" EntitySet="gruduation_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__register___cours__40F9A68C" Association="Self.FK__register___cours__40F9A68C">
+            <End Role="course_tbl" EntitySet="course_tbl" />
+            <End Role="register_tbl" EntitySet="register_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__manager_t__perso__31EC6D26" Association="Self.FK__manager_t__perso__31EC6D26">
+            <End Role="employee_tbl" EntitySet="employee_tbl" />
+            <End Role="manager_tbl" EntitySet="manager_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gruduatio__inter__3C69FB99" Association="Self.FK__gruduatio__inter__3C69FB99">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="gruduation_tbl" EntitySet="gruduation_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__history_t__inter__4316F928" Association="Self.FK__history_t__inter__4316F928">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="history_tbl" EntitySet="history_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__introduci__inter__4CA06362" Association="Self.FK__introduci__inter__4CA06362">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="introducing_tbl" EntitySet="introducing_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__register___inter__41EDCAC5" Association="Self.FK__register___inter__41EDCAC5">
+            <End Role="intern_tbl" EntitySet="intern_tbl" />
+            <End Role="register_tbl" EntitySet="register_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__introduci__manag__4AB81AF0" Association="Self.FK__introduci__manag__4AB81AF0">
+            <End Role="manager_tbl" EntitySet="manager_tbl" />
+            <End Role="introducing_tbl" EntitySet="introducing_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="bank_tbl">
+            <EntityTypeMapping TypeName="Model.bank_tbl">
+              <MappingFragment StoreEntitySet="bank_tbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bank_code" ColumnName="bank_code" />
+                <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+                <ScalarProperty Name="bank_state" ColumnName="bank_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bayatis">
+            <EntityTypeMapping TypeName="Model.bayati">
+              <MappingFragment StoreEntitySet="bayati">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="company_tbl">
+            <EntityTypeMapping TypeName="Model.company_tbl">
+              <MappingFragment StoreEntitySet="company_tbl">
+                <ScalarProperty Name="company_code" ColumnName="company_code" />
+                <ScalarProperty Name="company_activity" ColumnName="company_activity" />
+                <ScalarProperty Name="company_type" ColumnName="company_type" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="course_tbl">
+            <EntityTypeMapping TypeName="Model.course_tbl">
+              <MappingFragment StoreEntitySet="course_tbl">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="course_level" ColumnName="course_level" />
+                <ScalarProperty Name="course_coditions" ColumnName="course_coditions" />
+                <ScalarProperty Name="source_id" ColumnName="source_id" />
+                <ScalarProperty Name="master_personal_code" ColumnName="master_personal_code" />
+                <ScalarProperty Name="comples" ColumnName="comples" />
+                <ScalarProperty Name="class_num" ColumnName="class_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="degree_tbl">
+            <EntityTypeMapping TypeName="Model.degree_tbl">
+              <MappingFragment StoreEntitySet="degree_tbl">
+                <ScalarProperty Name="degree_code" ColumnName="degree_code" />
+                <ScalarProperty Name="degree_name" ColumnName="degree_name" />
+                <ScalarProperty Name="degree_organ" ColumnName="degree_organ" />
+                <ScalarProperty Name="degree_credential" ColumnName="degree_credential" />
+                <ScalarProperty Name="degree_score" ColumnName="degree_score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee_tbl">
+            <EntityTypeMapping TypeName="Model.employee_tbl">
+              <MappingFragment StoreEntitySet="employee_tbl">
+                <ScalarProperty Name="personal_code" ColumnName="personal_code" />
+                <ScalarProperty Name="contact_type" ColumnName="contact_type" />
+                <ScalarProperty Name="name_birthday" ColumnName="name_birthday" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="degree" ColumnName="degree" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gruduation_tbl">
+            <EntityTypeMapping TypeName="Model.gruduation_tbl">
+              <MappingFragment StoreEntitySet="gruduation_tbl">
+                <ScalarProperty Name="register_id" ColumnName="register_id" />
+                <ScalarProperty Name="intern_national_code" ColumnName="intern_national_code" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="register_date" ColumnName="register_date" />
+                <ScalarProperty Name="register_conditions" ColumnName="register_conditions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="history_tbl">
+            <EntityTypeMapping TypeName="Model.history_tbl">
+              <MappingFragment StoreEntitySet="history_tbl">
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+                <ScalarProperty Name="intern_national_code" ColumnName="intern_national_code" />
+                <ScalarProperty Name="history_titile" ColumnName="history_titile" />
+                <ScalarProperty Name="history_period" ColumnName="history_period" />
+                <ScalarProperty Name="history_wages" ColumnName="history_wages" />
+                <ScalarProperty Name="history_manager" ColumnName="history_manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="intern_tbl">
+            <EntityTypeMapping TypeName="Model.intern_tbl">
+              <MappingFragment StoreEntitySet="intern_tbl">
+                <ScalarProperty Name="intern_national_code" ColumnName="intern_national_code" />
+                <ScalarProperty Name="intern_name" ColumnName="intern_name" />
+                <ScalarProperty Name="intern_birthday" ColumnName="intern_birthday" />
+                <ScalarProperty Name="intern_job" ColumnName="intern_job" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="internship_request_tbl">
+            <EntityTypeMapping TypeName="Model.internship_request_tbl">
+              <MappingFragment StoreEntitySet="internship_request_tbl">
+                <ScalarProperty Name="request_num" ColumnName="request_num" />
+                <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="company_code" ColumnName="company_code" />
+                <ScalarProperty Name="request_conditiions" ColumnName="request_conditiions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="introducing_tbl">
+            <EntityTypeMapping TypeName="Model.introducing_tbl">
+              <MappingFragment StoreEntitySet="introducing_tbl">
+                <ScalarProperty Name="introducing_id" ColumnName="introducing_id" />
+                <ScalarProperty Name="manager_personal_code" ColumnName="manager_personal_code" />
+                <ScalarProperty Name="intern_national_code" ColumnName="intern_national_code" />
+                <ScalarProperty Name="company_code" ColumnName="company_code" />
+                <ScalarProperty Name="introducing_conditions" ColumnName="introducing_conditions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="manager_tbl">
+            <EntityTypeMapping TypeName="Model.manager_tbl">
+              <MappingFragment StoreEntitySet="manager_tbl">
+                <ScalarProperty Name="manager_personal_code" ColumnName="manager_personal_code" />
+                <ScalarProperty Name="history" ColumnName="history" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="master_tbl">
+            <EntityTypeMapping TypeName="Model.master_tbl">
+              <MappingFragment StoreEntitySet="master_tbl">
+                <ScalarProperty Name="master_personal_code" ColumnName="master_personal_code" />
+                <ScalarProperty Name="master_specialty" ColumnName="master_specialty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="register_tbl">
+            <EntityTypeMapping TypeName="Model.register_tbl">
+              <MappingFragment StoreEntitySet="register_tbl">
+                <ScalarProperty Name="register_id" ColumnName="register_id" />
+                <ScalarProperty Name="intern_national_code" ColumnName="intern_national_code" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="register_date" ColumnName="register_date" />
+                <ScalarProperty Name="register_conditions" ColumnName="register_conditions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="source_tbl">
+            <EntityTypeMapping TypeName="Model.source_tbl">
+              <MappingFragment StoreEntitySet="source_tbl">
+                <ScalarProperty Name="source_id" ColumnName="source_id" />
+                <ScalarProperty Name="source_author" ColumnName="source_author" />
+                <ScalarProperty Name="source_price" ColumnName="source_price" />
+                <ScalarProperty Name="source_title" ColumnName="source_title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="Model.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="request_num" ColumnName="request_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_tbl">
+            <EntityTypeMapping TypeName="Model.payment_tbl">
+              <MappingFragment StoreEntitySet="payment_tbl">
+                <ScalarProperty Name="intern_national_code" ColumnName="intern_national_code" />
+                <ScalarProperty Name="register_id" ColumnName="register_id" />
+                <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+                <ScalarProperty Name="payment_tracking_code" ColumnName="payment_tracking_code" />
+                <ScalarProperty Name="payment_amount" ColumnName="payment_amount" />
+                <ScalarProperty Name="bank_code" ColumnName="bank_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
